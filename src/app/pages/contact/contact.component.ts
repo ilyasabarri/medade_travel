@@ -107,16 +107,75 @@ export class ContactComponent implements OnInit {
     }
   }
 
+  formatDate(dateStr: string): string {
+    if (!dateStr) return '';
+    try {
+      const parts = dateStr.split('-');
+      if (parts.length === 3) {
+        return `${parts[2]}/${parts[1]}/${parts[0]}`;
+      }
+      return dateStr;
+    } catch {
+      return dateStr;
+    }
+  }
+
+  get guestLabel(): string {
+    const opt = this.contactPage.guestOptions?.find(
+      g => g.val === this.bookingForm.guests || g.label === this.bookingForm.guests
+    );
+    return opt ? opt.label : (this.bookingForm.guests || '2 personnes');
+  }
+
+  get circuitLabel(): string {
+    const opt = this.contactPage.circuitOptions?.find(
+      c => c.val === this.bookingForm.serviceType || c.label === this.bookingForm.serviceType
+    );
+    return opt ? opt.label : (this.selectedService || this.contactPage.circuitOptions[0]?.label || '');
+  }
+
+  get transportLabel(): string {
+    const opt = this.contactPage.transportOptions?.find(
+      t => t.val === this.bookingForm.transportOption || t.label === this.bookingForm.transportOption
+    );
+    return opt ? opt.label : (this.selectedTransport || this.contactPage.transportOptions[0]?.label || '');
+  }
+
   submitBookingWhatsApp() {
     const formToSubmit = {
       ...this.bookingForm,
-      serviceType: this.selectedService,
-      transportOption: this.selectedTransport
+      travelDate: this.bookingForm.travelDate ? this.formatDate(this.bookingForm.travelDate) : '',
+      guests: this.guestLabel,
+      serviceType: this.circuitLabel,
+      transportOption: this.transportLabel
     };
 
     const msg = this.contactPage.waMessageTemplate(formToSubmit);
     const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/${this.whatsappNumber}?text=${encoded}`, '_blank');
+    const url = `https://wa.me/${this.whatsappNumber}?text=${encoded}`;
+
+    if (typeof window !== 'undefined') {
+      const win = window.open(url, '_blank');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.location.href = url;
+      }
+    }
+  }
+
+  openDirectWhatsApp() {
+    let msg = 'Bonjour Medade Travel, je souhaiterais des informations sur vos circuits au Maroc et vos disponibilités.';
+    if (this.langService.currentLang() === 'en') {
+      msg = 'Hello Medade Travel, I would like information about your Morocco tours and availability.';
+    } else if (this.langService.currentLang() === 'ar') {
+      msg = 'السلام عليكم مداد ترافيل، أود الاستفسار عن جولاتكم السياحية بالمغرب والتوافر لديكم.';
+    }
+    const url = `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+    if (typeof window !== 'undefined') {
+      const win = window.open(url, '_blank');
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        window.location.href = url;
+      }
+    }
   }
 
   callDirect(phone: string) {

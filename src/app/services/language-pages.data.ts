@@ -465,7 +465,15 @@ export const CONTACT_PAGE_DATA: Record<Language, ContactPageData> = {
       }
     ],
     waMessageTemplate: (form: any) =>
-      `Bonjour Medade Travel,\n\nJe souhaite réserver ou obtenir un devis :\n- Nom : ${form.name || 'Client'}\n- Téléphone : ${form.phone || 'Non renseigné'}\n- Date prévue : ${form.travelDate || 'À convenir'}\n- Nombre de voyageurs : ${form.guests}\n- Circuit sélectionné : ${form.serviceType}\n- Formule Transport : ${form.transportOption}\n- Message : ${form.notes || 'Merci de me confirmer les disponibilités et le tarif direct.'}`
+      `*DEMANDE DE RÉSERVATION - MEDADE TRAVEL*\n\n` +
+      `👤 *Nom complet :* ${form.name || 'Non renseigné'}\n` +
+      `📱 *Téléphone / WhatsApp :* ${form.phone || 'Non renseigné'}\n` +
+      `📅 *Date souhaitée :* ${form.travelDate || 'À convenir'}\n` +
+      `👥 *Nombre de voyageurs :* ${form.guests}\n` +
+      `📍 *Circuit sélectionné :* ${form.serviceType}\n` +
+      `🚘 *Formule de transport :* ${form.transportOption}\n` +
+      `📝 *Précisions / Demandes :* ${form.notes || 'Aucune précision'}\n\n` +
+      `Merci de me confirmer la disponibilité et le tarif direct sans commission.`
   },
   en: {
     heroTag: 'AVAILABILITY & DIRECT QUOTES',
@@ -567,7 +575,15 @@ export const CONTACT_PAGE_DATA: Record<Language, ContactPageData> = {
       }
     ],
     waMessageTemplate: (form: any) =>
-      `Hello Medade Travel,\n\nI would like to book or receive a direct quote:\n- Name: ${form.name || 'Client'}\n- Phone: ${form.phone || 'Not provided'}\n- Date: ${form.travelDate || 'To be determined'}\n- Travellers: ${form.guests}\n- Selected Tour: ${form.serviceType}\n- Transport Formula: ${form.transportOption}\n- Message: ${form.notes || 'Please confirm availability and direct rate.'}`
+      `*NEW BOOKING REQUEST - MEDADE TRAVEL*\n\n` +
+      `👤 *Full Name:* ${form.name || 'Not provided'}\n` +
+      `📱 *Phone / WhatsApp:* ${form.phone || 'Not provided'}\n` +
+      `📅 *Planned Travel Date:* ${form.travelDate || 'To be determined'}\n` +
+      `👥 *Number of Travellers:* ${form.guests}\n` +
+      `📍 *Selected Tour:* ${form.serviceType}\n` +
+      `🚘 *Transport Option:* ${form.transportOption}\n` +
+      `📝 *Special Notes / Requests:* ${form.notes || 'None'}\n\n` +
+      `Please confirm availability and direct rate with no agency fees. Thank you!`
   },
   ar: {
     heroTag: 'التوافر وعروض الأسعار المباشرة',
@@ -669,7 +685,15 @@ export const CONTACT_PAGE_DATA: Record<Language, ContactPageData> = {
       }
     ],
     waMessageTemplate: (form: any) =>
-      `السلام عليكم مداد ترافيل،\n\nأود طلب عرض سعر وحجز رحلة:\n- الاسم: ${form.name || 'عميل'}\n- رقم الهاتف: ${form.phone || 'غير محدد'}\n- التاريخ المرتقب: ${form.travelDate || 'يحدد لاحقاً'}\n- عدد المسافرين: ${form.guests}\n- الرحلة المختارة: ${form.serviceType}\n- صيغة النقل: ${form.transportOption}\n- ملاحظات إضافية: ${form.notes || 'المرجو تأكيد التوافر وأفضل سعر مباشر.'}`
+      `*طلب حجز جديد - مداد ترافيل*\n\n` +
+      `👤 *الاسم الكامل:* ${form.name || 'غير محدد'}\n` +
+      `📱 *رقم الهاتف / واتساب:* ${form.phone || 'غير محدد'}\n` +
+      `📅 *تاريخ الرحلة المرتقب:* ${form.travelDate || 'يحدد لاحقاً'}\n` +
+      `👥 *عدد المسافرين:* ${form.guests}\n` +
+      `📍 *الرحلة المختارة:* ${form.serviceType}\n` +
+      `🚘 *صيغة النقل:* ${form.transportOption}\n` +
+      `📝 *ملاحظات خاصة:* ${form.notes || 'لا توجد ملاحظات إضافية'}\n\n` +
+      `المرجو تأكيد التوافر وأفضل سعر مباشر بدون عمولة. شكراً لكم!`
   }
 };
 

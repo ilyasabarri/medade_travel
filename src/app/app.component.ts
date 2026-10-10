@@ -61,12 +61,6 @@ export class AppComponent {
   }
 
   quickWhatsApp() {
-    let message = 'Bonjour Medade Travel, je souhaiterais des informations sur vos circuits au Maroc et vos offres transport.';
-    if (this.currentLang === 'en') {
-      message = 'Hello Medade Travel, I would like information about your Morocco tours and transport options.';
-    } else if (this.currentLang === 'ar') {
-      message = 'السلام عليكم مداد ترافيل، أود الاستفسار عن جولاتكم السياحية بالمغرب وخيارات النقل المتاحة.';
-    }
-    window.open(`https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    this.router.navigate(['/contact'], { fragment: 'booking-form' });
   }
 }

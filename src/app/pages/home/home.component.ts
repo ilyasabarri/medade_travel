@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LanguageService, TourTranslation } from '../../services/language.service';
 import { HomePageData } from '../../services/language-pages.data';
 
@@ -12,6 +12,7 @@ import { HomePageData } from '../../services/language-pages.data';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  router = inject(Router);
   langService = inject(LanguageService);
   selectedTab: 'all' | 'sahara' | 'agafay' | 'prive' = 'all';
 
@@ -44,23 +45,16 @@ export class HomeComponent {
     }
   }
 
-  bookTourWhatsApp(tourTitle: string) {
-    let msg = `Bonjour Medade Travel, je souhaite réserver ou avoir plus d'informations sur : "${tourTitle}". Pouvez-vous me confirmer vos disponibilités et le tarif direct ?`;
-    if (this.langService.currentLang() === 'en') {
-      msg = `Hello Medade Travel, I would like to book or inquire about: "${tourTitle}". Could you please confirm availability and direct rate?`;
-    } else if (this.langService.currentLang() === 'ar') {
-      msg = `السلام عليكم مداد ترافيل، أود الاستفسار وحجز: "${tourTitle}". المرجو تأكيد التوافر وأفضل سعر مباشر.`;
-    }
-    window.open(`https://wa.me/212637053131?text=${encodeURIComponent(msg)}`, '_blank');
+  bookTourWhatsApp(tourIdentifier: string) {
+    this.router.navigate(['/contact'], {
+      queryParams: { tour: tourIdentifier },
+      fragment: 'booking-form'
+    });
   }
 
   quickWhatsApp() {
-    let msg = 'Bonjour Medade Travel, je cherche un circuit ou une location de véhicule au départ de Marrakech. Quels sont vos départs disponibles ?';
-    if (this.langService.currentLang() === 'en') {
-      msg = 'Hello Medade Travel, I am looking for a tour or vehicle rental departing from Marrakech. What are your available departures?';
-    } else if (this.langService.currentLang() === 'ar') {
-      msg = 'السلام عليكم مداد ترافيل، أبحث عن جولة سياحية أو كراء سيارة انطلاقاً من مراكش. ما هي البرامج المتاحة لديكم؟';
-    }
-    window.open(`https://wa.me/212637053131?text=${encodeURIComponent(msg)}`, '_blank');
+    this.router.navigate(['/contact'], {
+      fragment: 'booking-form'
+    });
   }
 }

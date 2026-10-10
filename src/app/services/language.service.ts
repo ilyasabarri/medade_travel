@@ -909,23 +909,6 @@ export class LanguageService {
           reviewsCount: 198,
           imageUrl: 'assets/taghazout-morocco.jpeg',
           link: '/circuits'
-        },
-        {
-          id: 'transport-rental',
-          category: 'prive',
-          badge: 'Transport & Rental',
-          badgeType: 'shared',
-          title: 'Transport Choice: Self-Drive Vehicle or Dedicated Private Chauffeur',
-          duration: 'Daily Rental or Full Tour',
-          location: 'Marrakech & All Morocco Regions',
-          priceNote: 'Self-drive starting from',
-          priceAmount: '450 MAD / Day',
-          description: 'Travel with complete freedom with modern air-conditioned cars (from 450 MAD/day), or enjoy professional bilingual private chauffeurs at your full disposal.',
-          highlights: ['Recent air-conditioned vehicle fleet', '24/7 Local assistance & flexible pick-up', 'Dedicated professional bilingual drivers'],
-          rating: 4.9,
-          reviewsCount: 420,
-          imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
-          link: '/circuits'
         }
       ];
     }
@@ -982,23 +965,6 @@ export class LanguageService {
           reviewsCount: 198,
           imageUrl: 'assets/taghazout-morocco.jpeg',
           link: '/circuits'
-        },
-        {
-          id: 'transport-rental',
-          category: 'prive',
-          badge: 'النقل وكراء السيارات',
-          badgeType: 'shared',
-          title: 'النقل حسب اختياركم: كراء سيارة بدون سائق أو مع سائق خاص',
-          duration: 'يومي أو طيلة مدة الرحلة',
-          location: 'مراكش وكافة جهات المملكة',
-          priceNote: 'بدون سائق ابتداءً من',
-          priceAmount: '450 درهم / اليوم',
-          description: 'تنقلوا بحرية تامة مع أسطول سيارات حديث ومكيف (من 450 درهم/يوم)، أو تمتعوا بخدمة سائقينا المحترفين ثنائيي اللغة رهن إشارتكم طوال إقامتكم.',
-          highlights: ['سيارات حديثة ومكيفة تماماً', 'مساعدة محلية 24/7 وتسليم مرن', 'سائقون خاصون محترفون ومهذبون'],
-          rating: 4.9,
-          reviewsCount: 420,
-          imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
-          link: '/circuits'
         }
       ];
     }
@@ -1054,23 +1020,6 @@ export class LanguageService {
         rating: 4.9,
         reviewsCount: 198,
         imageUrl: 'assets/taghazout-morocco.jpeg',
-        link: '/circuits'
-      },
-      {
-        id: 'transport-rental',
-        category: 'prive',
-        badge: 'Transport & Location',
-        badgeType: 'shared',
-        title: 'Transport au Choix : Véhicule sans Chauffeur ou avec Chauffeur Dédié',
-        duration: 'À la journée ou en circuit',
-        location: 'Marrakech & Toutes Régions du Maroc',
-        priceNote: 'Sans chauffeur à partir de',
-        priceAmount: '450 MAD / J',
-        description: 'Déplacez-vous en toute autonomie avec notre flotte de voitures récentes climatisées (dès 450 DH/jour), ou profitez de nos chauffeurs bilingues dédiés à votre entière disposition.',
-        highlights: ['Véhicules récents et climatisés', 'Assistance locale 7j/7 et prise en charge flexible', 'Chauffeurs privés bilingues & courtois'],
-        rating: 4.9,
-        reviewsCount: 420,
-        imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
         link: '/circuits'
       }
     ];

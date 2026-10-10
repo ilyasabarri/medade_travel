@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LanguageService, CircuitTranslation } from '../../services/language.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { LanguageService, CircuitTranslation } from '../../services/language.ser
   styleUrl: './circuits.component.css'
 })
 export class CircuitsComponent {
+  router = inject(Router);
   langService = inject(LanguageService);
   activeCircuitId = 'circuit-1';
   expandedDayIndex: number | null = 0;
@@ -33,13 +34,10 @@ export class CircuitsComponent {
   }
 
   bookCircuitWhatsApp(circuitName: string) {
-    let message = `Bonjour Medade Travel, je suis très intéressé(e) par : "${circuitName}". Pourriez-vous me transmettre votre devis et disponibilités ?`;
-    if (this.langService.currentLang() === 'en') {
-      message = `Hello Medade Travel, I am very interested in: "${circuitName}". Could you please send me availability and a quote?`;
-    } else if (this.langService.currentLang() === 'ar') {
-      message = `السلام عليكم مداد ترافيل، أنا مهتم جداً برحلة: "${circuitName}". المرجو إفادتي بالتوافر وعرض السعر.`;
-    }
-    window.open(`https://wa.me/212637053131?text=${encodeURIComponent(message)}`, '_blank');
+    this.router.navigate(['/contact'], {
+      queryParams: { tour: this.activeCircuitId || circuitName },
+      fragment: 'booking-form'
+    });
   }
 
   inquireTransportWhatsApp(optionTitle: string) {

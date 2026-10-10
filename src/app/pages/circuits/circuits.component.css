@@ -1,0 +1,529 @@
+/* ==========================================================================
+   CIRCUITS COMPONENT CSS - MARRAKECH DESERT TRIPS THEME
+   ========================================================================== */
+
+.page-hero-banner {
+  position: relative;
+  padding: 90px 0 70px;
+  background: linear-gradient(135deg, var(--midnight-dark) 0%, var(--midnight) 60%, var(--terracotta-dark) 100%);
+  color: var(--white);
+  text-align: center;
+}
+
+.hero-text-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-weight: 600;
+  color: var(--white);
+  margin: 8px 0 16px;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: rgba(245, 237, 216, 0.85);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.circuits-main-section {
+  padding: 60px 0 90px;
+  background: var(--cream);
+}
+
+/* Tabs Navigation */
+.circuit-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.circuit-tab-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 24px;
+  background: var(--white);
+  border: 1.5px solid var(--sand-dark);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.circuit-tab-pill:hover {
+  border-color: var(--terracotta);
+  transform: translateY(-2px);
+}
+
+.circuit-tab-pill.active {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.tab-duration {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.tab-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Overview Card */
+.circuit-overview-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 50px;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.overview-content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-badge-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.badge-gold {
+  background: var(--terracotta);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.badge-duration,
+.badge-pace {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.circuit-name {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.circuit-summary {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.inclusions-panel {
+  background: var(--sand);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 28px;
+}
+
+.inclusions-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+
+.inclusions-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.inclusions-grid li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--charcoal);
+}
+
+.check-icon {
+  color: #2E8540;
+  font-weight: bold;
+}
+
+.circuit-cta-row {
+  display: flex;
+  gap: 14px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.overview-media {
+  position: relative;
+  min-height: 380px;
+}
+
+.circuit-img-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.circuit-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.circuit-guarantee-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(26, 39, 68, 0.92);
+  color: var(--sand);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+/* Day-by-Day Accordion */
+.day-by-day-section {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--sand-dark);
+  padding-bottom: 16px;
+}
+
+.day-by-day-heading {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.click-hint {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.days-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.day-accordion-item {
+  border: 1.5px solid var(--sand-dark);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.day-accordion-item.expanded {
+  border-color: var(--terracotta);
+  box-shadow: 0 4px 16px rgba(179, 60, 10, 0.08);
+}
+
+.day-accordion-header {
+  display: flex;
+  align-items: center;
+  padding: 18px 24px;
+  background: var(--sand);
+  cursor: pointer;
+  gap: 16px;
+}
+
+.day-badge-col .day-number {
+  background: var(--midnight);
+  color: var(--sand);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.day-title-col {
+  flex: 1;
+}
+
+.day-title-text {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.day-arrow-col {
+  font-size: 12px;
+  color: var(--terracotta);
+}
+
+.day-accordion-body {
+  padding: 24px;
+  background: var(--white);
+}
+
+.day-desc-text {
+  font-size: 14.5px;
+  color: var(--charcoal);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 18px;
+}
+
+.stops-box {
+  background: var(--cream);
+  border-left: 3px solid var(--gold);
+  padding: 12px 18px;
+  border-radius: var(--radius);
+}
+
+.stops-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.stops-pills-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.stop-pill {
+  font-size: 12px;
+  background: var(--white);
+  border: 1px solid var(--sand-dark);
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: var(--charcoal);
+}
+
+/* Transport Highlight Banner in Circuit Card */
+.transport-highlight-banner {
+  background: linear-gradient(135deg, rgba(212, 160, 23, 0.12) 0%, rgba(179, 60, 10, 0.08) 100%);
+  border: 1px dashed var(--gold);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+
+.transport-icon-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta-dark);
+  background: rgba(179, 60, 10, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.transport-highlight-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--charcoal);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   DEDICATED TRANSPORT SECTION STYLING
+   ========================================================================== */
+.transport-section {
+  padding: 70px 0;
+  background: var(--sand);
+}
+
+.transport-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.transport-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  border: 1.5px solid var(--sand-dark);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: var(--transition);
+}
+
+.transport-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--gold);
+}
+
+.transport-card.featured {
+  border-color: var(--terracotta);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF8 100%);
+  box-shadow: 0 8px 30px rgba(179, 60, 10, 0.08);
+}
+
+.transport-card-tag {
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--sand-dark);
+  color: var(--charcoal);
+  margin-bottom: 16px;
+}
+
+.transport-card-tag.gold {
+  background: var(--gold);
+  color: var(--midnight-dark);
+}
+
+.transport-price-box {
+  margin-bottom: 16px;
+}
+
+.transport-from {
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.transport-price-val {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--terracotta);
+  line-height: 1.1;
+}
+
+.transport-price-val small {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.transport-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 10px;
+}
+
+.transport-card-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.transport-perks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+  margin-top: auto;
+}
+
+.transport-perks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--charcoal);
+}
+
+.transport-perks li span {
+  color: #2E8540;
+  font-weight: bold;
+}
+
+.w-full {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-content {
+    padding: 24px;
+  }
+
+  .day-by-day-section {
+    padding: 24px;
+  }
+
+  .day-accordion-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .transport-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

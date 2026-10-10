@@ -1,0 +1,203 @@
+<section class="page-hero-banner">
+  <div class="container hero-text-wrap">
+    <span class="label">{{ langService.circuitsPage.heroTag }}</span>
+    <h1 class="page-title">{{ langService.circuitsPage.heroTitle }}</h1>
+    <p class="page-subtitle">
+      {{ langService.circuitsPage.heroSubtitle }}
+    </p>
+  </div>
+</section>
+
+<section class="circuits-main-section">
+  <div class="container">
+    
+    <!-- Circuit Selector Tabs -->
+    <div class="circuit-tabs-nav">
+      <button *ngFor="let c of circuits" 
+              class="circuit-tab-pill" 
+              [class.active]="c.id === activeCircuitId"
+              (click)="selectCircuit(c.id)">
+        <span class="tab-duration">{{ c.duration }}</span>
+        <span class="tab-title">{{ c.name.split(':')[0] }}</span>
+      </button>
+    </div>
+
+    <!-- Active Circuit Detail Presentation -->
+    <div class="active-circuit-presentation">
+      <!-- Circuit Hero Card -->
+      <div class="circuit-overview-card">
+        <div class="overview-grid">
+          <div class="overview-content">
+            <div class="overview-badge-row">
+              <span class="badge-gold">{{ currentCircuit.badge }}</span>
+              <span class="badge-duration">{{ currentCircuit.duration }}</span>
+              <span class="badge-pace">{{ langService.circuitsPage.rythmeLabel }} {{ currentCircuit.pace }}</span>
+            </div>
+
+            <h2 class="circuit-name">{{ currentCircuit.name }}</h2>
+            <p class="circuit-summary">{{ currentCircuit.summary }}</p>
+
+            <!-- Special Transport Info Callout -->
+            <div class="transport-highlight-banner" *ngIf="currentCircuit.transportOffer">
+              <div class="transport-highlight-content">
+                <span class="transport-icon-tag">{{ langService.circuitsPage.transportBadge }}</span>
+                <p class="transport-highlight-text">{{ currentCircuit.transportOffer }}</p>
+              </div>
+            </div>
+
+            <div class="inclusions-panel">
+              <h4 class="inclusions-title">{{ langService.circuitsPage.inclusionsTitle }}</h4>
+              <ul class="inclusions-grid">
+                <li *ngFor="let inc of currentCircuit.inclusions">
+                  <span class="check-icon">•</span>
+                  <span>{{ inc }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="circuit-cta-row">
+              <button class="btn btn--primary" (click)="bookCircuitWhatsApp(currentCircuit.name)">
+                <span>{{ langService.circuitsPage.btnBookWa }}</span>
+              </button>
+              <a routerLink="/contact" class="btn btn--outline-dark">
+                <span>{{ langService.circuitsPage.btnCustomize }}</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="overview-media">
+            <div class="circuit-img-frame">
+              <img [src]="currentCircuit.imageUrl" [alt]="currentCircuit.name" class="circuit-img">
+              <div class="circuit-guarantee-badge">
+                <span>{{ langService.circuitsPage.guaranteeBadge }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day-by-Day Interactive Accordion -->
+      <div class="day-by-day-section">
+        <div class="section-header-row">
+          <div>
+            <span class="label">{{ langService.circuitsPage.detailedProgramTag }}</span>
+            <h3 class="day-by-day-heading">{{ langService.circuitsPage.dayByDayTitle }}</h3>
+          </div>
+          <span class="click-hint">{{ langService.circuitsPage.clickHint }}</span>
+        </div>
+
+        <div class="days-accordion">
+          <div *ngFor="let day of currentCircuit.days; let idx = index" 
+               class="day-accordion-item" 
+               [class.expanded]="expandedDayIndex === idx">
+            
+            <div class="day-accordion-header" (click)="toggleDay(idx)">
+              <div class="day-badge-col">
+                <span class="day-number">{{ langService.circuitsPage.dayPrefix }} {{ day.dayNumber }}</span>
+              </div>
+              <div class="day-title-col">
+                <h4 class="day-title-text">{{ day.title }}</h4>
+              </div>
+              <div class="day-arrow-col">
+                <span class="accordion-arrow">{{ expandedDayIndex === idx ? '▲' : '▼' }}</span>
+              </div>
+            </div>
+
+            <div class="day-accordion-body" *ngIf="expandedDayIndex === idx">
+              <p class="day-desc-text">{{ day.description }}</p>
+              
+              <div class="stops-box">
+                <span class="stops-label">{{ langService.circuitsPage.keyStopsLabel }}</span>
+                <div class="stops-pills-row">
+                  <span *ngFor="let stop of day.stops" class="stop-pill">
+                    {{ stop }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================================================
+     DEDICATED SECTION: TRANSPORT & MOBILITÉ
+     ========================================================================== -->
+<section class="section section--sand transport-section">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="label">{{ langService.circuitsPage.transportSectionTag }}</span>
+      <h2 class="section-title">{{ langService.circuitsPage.transportSectionTitle }}</h2>
+      <p class="section-desc">
+        {{ langService.circuitsPage.transportSectionDesc }}
+      </p>
+    </div>
+
+    <div class="transport-cards-grid">
+      <!-- Card 1: Sans Chauffeur -->
+      <div class="transport-card">
+        <div class="transport-card-tag">{{ langService.circuitsPage.card1.tag }}</div>
+        <div class="transport-price-box">
+          <span class="transport-from">{{ langService.circuitsPage.card1.from }}</span>
+          <div class="transport-price-val">{{ langService.circuitsPage.card1.price }} <small>{{ langService.circuitsPage.card1.unit }}</small></div>
+        </div>
+        <h3 class="transport-title">{{ langService.circuitsPage.card1.title }}</h3>
+        <p class="transport-card-desc">
+          {{ langService.circuitsPage.card1.desc }}
+        </p>
+        <ul class="transport-perks">
+          <li *ngFor="let perk of langService.circuitsPage.card1.perks">
+            <span>✓</span> {{ perk }}
+          </li>
+        </ul>
+        <button class="btn btn--primary w-full" (click)="inquireTransportWhatsApp(langService.circuitsPage.card1.title)">
+          <span>{{ langService.circuitsPage.card1.btn }}</span>
+        </button>
+      </div>
+
+      <!-- Card 2: Avec Chauffeur Privé Dédié -->
+      <div class="transport-card featured">
+        <div class="transport-card-tag gold">{{ langService.circuitsPage.card2.tag }}</div>
+        <div class="transport-price-box">
+          <span class="transport-from">{{ langService.circuitsPage.card2.from }}</span>
+          <div class="transport-price-val">{{ langService.circuitsPage.card2.price }} <small>{{ langService.circuitsPage.card2.unit }}</small></div>
+        </div>
+        <h3 class="transport-title">{{ langService.circuitsPage.card2.title }}</h3>
+        <p class="transport-card-desc">
+          {{ langService.circuitsPage.card2.desc }}
+        </p>
+        <ul class="transport-perks">
+          <li *ngFor="let perk of langService.circuitsPage.card2.perks">
+            <span>✓</span> {{ perk }}
+          </li>
+        </ul>
+        <button class="btn btn--primary w-full" (click)="inquireTransportWhatsApp(langService.circuitsPage.card2.title)">
+          <span>{{ langService.circuitsPage.card2.btn }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 100% Moroccan Travel Guarantee -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="label">{{ langService.circuitsPage.guaranteeTag }}</span>
+      <h2 class="section-title white">{{ langService.circuitsPage.guaranteeTitle }}</h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card" *ngFor="let g of langService.circuitsPage.guarantees">
+        <div class="why-accent">{{ g.accent }}</div>
+        <h3>{{ g.title }}</h3>
+        <p>{{ g.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>

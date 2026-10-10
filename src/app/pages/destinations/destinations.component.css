@@ -1,0 +1,214 @@
+/* ==========================================================================
+   DESTINATIONS COMPONENT CSS - MARRAKECH DESERT TRIPS THEME
+   ========================================================================== */
+
+.page-hero-banner {
+  position: relative;
+  padding: 90px 0 70px;
+  background: linear-gradient(135deg, var(--midnight-dark) 0%, var(--midnight) 60%, var(--terracotta-dark) 100%);
+  color: var(--white);
+  text-align: center;
+}
+
+.hero-text-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-weight: 600;
+  color: var(--white);
+  margin: 8px 0 16px;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: rgba(245, 237, 216, 0.85);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.destinations-detail-section {
+  padding: 70px 0 90px;
+  background: var(--cream);
+}
+
+.destinations-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.destination-detailed-card {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.destination-detailed-card.reverse {
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.destination-detailed-card.reverse .dest-media-col {
+  order: 2;
+}
+
+.destination-detailed-card.reverse .dest-info-col {
+  order: 1;
+}
+
+.dest-media-col {
+  position: relative;
+  min-height: 380px;
+}
+
+.dest-image-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.dest-featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dest-badge-corner {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: var(--terracotta);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dest-info-col {
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dest-meta-header {
+  margin-bottom: 14px;
+}
+
+.dest-name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-top: 4px;
+}
+
+.dest-description {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 22px;
+}
+
+.dest-key-highlights {
+  background: var(--sand);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin-bottom: 22px;
+}
+
+.highlights-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+
+.dest-key-highlights ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dest-key-highlights li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--charcoal);
+}
+
+.check-icon {
+  color: #2E8540;
+  font-weight: bold;
+}
+
+.dest-practical-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--sand-dark);
+}
+
+.practical-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.p-value {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.dest-action-buttons {
+  display: flex;
+  gap: 14px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .destination-detailed-card,
+  .destination-detailed-card.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .destination-detailed-card.reverse .dest-media-col {
+    order: 1;
+  }
+
+  .destination-detailed-card.reverse .dest-info-col {
+    order: 2;
+  }
+
+  .dest-info-col {
+    padding: 28px;
+  }
+}

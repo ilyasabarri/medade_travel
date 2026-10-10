@@ -1,0 +1,381 @@
+<!-- ==========================================================================
+     HERO SECTION
+     ========================================================================== -->
+<section class="hero">
+  <!-- Immersive Desert Background -->
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1920&q=85" 
+         alt="Dunes du Sahara Merzouga - Medade Travel">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-particles"></div>
+
+  <!-- Hero Content -->
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>{{ homePage.heroBadge }}</span>
+      </div>
+
+      <div class="hero-eyebrow">
+        <span>{{ homePage.heroEyebrow }}</span>
+      </div>
+
+      <h1 class="hero-title">
+        {{ homePage.heroTitle }}<br>
+        <em>{{ homePage.heroTitleEm }}</em>
+      </h1>
+
+      <p class="hero-subtitle">
+        {{ homePage.heroSubtitle }}
+      </p>
+
+      <div class="hero-actions">
+        <a href="#tours-catalog" class="btn btn--primary">
+          <span>{{ homePage.btnExplore }}</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+
+        <a routerLink="/circuits" class="btn btn--outline">
+          <span>{{ homePage.btnTransport }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <a href="#trust-bar" class="hero-scroll" aria-label="Scroll down">
+    <span>{{ homePage.scrollHint }}</span>
+    <div class="hero-scroll-arrow"></div>
+  </a>
+</section>
+
+<!-- ==========================================================================
+     TRUST BAR
+     ========================================================================== -->
+<div id="trust-bar" class="trust-bar">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-item" *ngFor="let t of homePage.trustItems; let idx = index">
+        <div class="trust-icon">
+          <svg *ngIf="idx === 0" viewBox="0 0 24 24" fill="none" stroke="#E8C56E" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <svg *ngIf="idx === 1" viewBox="0 0 24 24" fill="none" stroke="#E8C56E" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          <svg *ngIf="idx === 2" viewBox="0 0 24 24" fill="none" stroke="#E8C56E" stroke-width="2">
+            <path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+          </svg>
+          <svg *ngIf="idx === 3" viewBox="0 0 24 24" fill="none" stroke="#E8C56E" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </div>
+        <div class="trust-text">
+          <strong>{{ t.title }}</strong>
+          <span>{{ t.desc }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     QUICK ANSWER & CATALOG SECTION
+     ========================================================================== -->
+<section id="tours-catalog" class="section section--cream">
+  <div class="container">
+    <!-- Quick Answer Box -->
+    <div class="quick-answer">
+      <span class="quick-answer-label">{{ homePage.quickAnswerTag }}</span>
+      <p>
+        <strong>{{ homePage.quickAnswerQ }}</strong> {{ homePage.quickAnswerA }}
+      </p>
+    </div>
+
+    <!-- Section Header -->
+    <div class="section-header section-header--center">
+      <span class="label">{{ homePage.catalogTag }}</span>
+      <h2 class="section-title">
+        {{ homePage.catalogTitle }} <em>{{ homePage.catalogTitleEm }}</em>
+      </h2>
+      <p class="section-subtitle">
+        {{ homePage.catalogSubtitle }}
+      </p>
+    </div>
+
+    <!-- Tours Tabs Navigation -->
+    <div class="tours-tabs-container">
+      <div class="tours-tabs">
+        <button class="tour-tab" [class.active]="selectedTab === 'all'" (click)="setTab('all')">
+          {{ homePage.tabAll }} ({{ tours.length }})
+        </button>
+        <button class="tour-tab" [class.active]="selectedTab === 'sahara'" (click)="setTab('sahara')">
+          {{ homePage.tab1 }}
+        </button>
+        <button class="tour-tab" [class.active]="selectedTab === 'agafay'" (click)="setTab('agafay')">
+          {{ homePage.tab2 }}
+        </button>
+        <button class="tour-tab" [class.active]="selectedTab === 'prive'" (click)="setTab('prive')">
+          {{ homePage.tab3 }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Filter Status -->
+    <div class="filter-status">
+      <div>
+        {{ homePage.filterShowing }} <strong>{{ filteredTours.length }} {{ homePage.filterSuffix }}</strong>
+      </div>
+      <button *ngIf="selectedTab !== 'all'" class="filter-reset" (click)="setTab('all')">
+        {{ homePage.filterReset }}
+      </button>
+    </div>
+
+    <!-- Tours Grid -->
+    <div class="tours-grid">
+      <div *ngFor="let tour of filteredTours" class="tour-card">
+        <!-- Tour Image & Badges -->
+        <div class="tour-card-img">
+          <img [src]="tour.imageUrl" [alt]="tour.title">
+          <span class="tour-badge" [class.tour-badge--shared]="tour.badgeType === 'shared'" [class.tour-badge--daytrip]="tour.badgeType === 'daytrip'">
+            {{ tour.badge }}
+          </span>
+          <span class="tour-price-badge">{{ tour.priceAmount }}</span>
+        </div>
+
+        <!-- Tour Body -->
+        <div class="tour-card-body">
+          <div class="tour-card-meta">
+            <span class="tour-duration">{{ tour.duration }}</span>
+            <span class="tour-location">{{ tour.location.split('•')[0] }}</span>
+          </div>
+
+          <h3 class="tour-card-title">
+            <a [routerLink]="tour.link">{{ tour.title }}</a>
+          </h3>
+
+          <p class="tour-card-desc">
+            {{ tour.description }}
+          </p>
+
+          <ul class="tour-card-highlights">
+            <li *ngFor="let h of tour.highlights.slice(0, 2)">
+              <span class="check-bullet">•</span>
+              <span>{{ h }}</span>
+            </li>
+          </ul>
+
+          <!-- Tour Card Footer -->
+          <div class="tour-card-footer">
+            <div class="tour-price">
+              <span class="from">{{ tour.priceNote }}</span>
+              <span class="amount">{{ tour.priceAmount }}</span>
+            </div>
+
+            <div class="tour-reviews">
+              <span class="rating-badge">{{ homePage.cardRatingNote }} {{ tour.rating }} / 5</span>
+              <span>{{ tour.reviewsCount }} {{ homePage.cardReviewsVerified }}</span>
+            </div>
+          </div>
+
+          <!-- Quick WhatsApp CTA -->
+          <div class="tour-card-actions">
+            <a [routerLink]="tour.link" class="btn-card-details">
+              {{ homePage.cardBtnDetails }}
+            </a>
+            <button class="btn-card-wa" (click)="bookTourWhatsApp(tour.title)">
+              {{ homePage.cardBtnWa }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     COMPARISON TABLE
+     ========================================================================== -->
+<section class="section section--sand">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="label">{{ homePage.compTag }}</span>
+      <h2 class="section-title">
+        {{ homePage.compTitle }} <em>{{ homePage.compTitleEm }}</em>
+      </h2>
+      <p class="section-subtitle">
+        {{ homePage.compSubtitle }}
+      </p>
+    </div>
+
+    <div class="table-responsive">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>{{ homePage.compHeaders[0] }}</th>
+            <th>{{ homePage.compHeaders[1] }}</th>
+            <th>{{ homePage.compHeaders[2] }}</th>
+            <th>{{ homePage.compHeaders[3] }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of homePage.compRows">
+            <td class="comparison-label">{{ row.label }}</td>
+            <td>{{ row.val1 }}</td>
+            <td>{{ row.val2 }}</td>
+            <td><strong>{{ row.val3 }}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     WHY CHOOSE US
+     ========================================================================== -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="label">{{ homePage.whyTag }}</span>
+      <h2 class="section-title white">
+        {{ homePage.whyTitle }} <em>{{ homePage.whyTitleEm }}</em>
+      </h2>
+      <p class="section-subtitle" style="color: rgba(245, 237, 216, 0.7);">
+        {{ homePage.whySubtitle }}
+      </p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card" *ngFor="let card of homePage.whyCards">
+        <div class="why-accent">{{ card.accent }}</div>
+        <h3>{{ card.title }}</h3>
+        <p>{{ card.desc }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     THE EXPERIENCE
+     ========================================================================== -->
+<section class="experience">
+  <div class="experience-img">
+    <img src="assets/star-lit-nights.jpeg" 
+         alt="Expérience Désert & Nuits Étoilées - Medade Travel">
+  </div>
+  <div class="experience-content">
+    <div>
+      <span class="label">{{ homePage.expTag }}</span>
+      <h2 class="section-title">
+        {{ homePage.expTitle }} <em>{{ homePage.expTitleEm }}</em>
+      </h2>
+      <p class="section-subtitle">
+        {{ homePage.expDesc }}
+      </p>
+
+      <div class="experience-stats">
+        <div class="stat" *ngFor="let stat of homePage.expStats">
+          <strong>{{ stat.num }}</strong>
+          <span>{{ stat.label }}</span>
+        </div>
+      </div>
+
+      <button class="btn btn--primary" (click)="quickWhatsApp()">
+        <span>{{ homePage.expBtnWa }}</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     TESTIMONIALS
+     ========================================================================== -->
+<section class="section section--sand">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="label">{{ homePage.testiTag }}</span>
+      <h2 class="section-title">
+        {{ homePage.testiTitle }} <em>{{ homePage.testiTitleEm }}</em>
+      </h2>
+      <p class="section-subtitle">
+        {{ homePage.testiSubtitle }}
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card" *ngFor="let t of homePage.testimonials">
+        <div class="testi-rating-badge">{{ homePage.testiBadge }}</div>
+        <p class="testi-text">
+          {{ t.text }}
+        </p>
+        <div class="testi-author">
+          <strong>{{ t.author }}</strong>
+          <span>{{ t.location }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     FAQ SECTION
+     ========================================================================== -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="label">{{ homePage.faqTag }}</span>
+      <h2 class="section-title">
+        {{ homePage.faqTitle }} <em>{{ homePage.faqTitleEm }}</em>
+      </h2>
+      <p class="section-subtitle">
+        {{ homePage.faqSubtitle }}
+      </p>
+    </div>
+
+    <div class="faq-accordion-list">
+      <div *ngFor="let item of faqList; let i = index" class="faq-item" [class.open]="item.open">
+        <button class="faq-header" (click)="toggleFaq(i)">
+          <span class="faq-question">{{ item.question }}</span>
+          <span class="faq-icon">{{ item.open ? '−' : '+' }}</span>
+        </button>
+        <div class="faq-body" *ngIf="item.open">
+          <p>{{ item.answer }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     BOTTOM CTA BANNER
+     ========================================================================== -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner-box">
+      <div class="cta-banner-content">
+        <span class="cta-pill">{{ homePage.ctaPill }}</span>
+        <h2 class="cta-banner-title">
+          {{ homePage.ctaTitle }}
+        </h2>
+        <p class="cta-banner-desc">
+          {{ homePage.ctaDesc }}
+        </p>
+      </div>
+
+      <div class="cta-banner-actions">
+        <button class="btn btn--whatsapp btn--lg" (click)="quickWhatsApp()">
+          <span>{{ homePage.ctaBtnWa }}</span>
+        </button>
+        <a routerLink="/contact" class="btn btn--outline-white btn--lg">
+          <span>{{ homePage.ctaBtnQuote }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,159 @@
+<section class="page-hero-banner">
+  <div class="container hero-text-wrap">
+    <span class="label">{{ contactPage.heroTag }}</span>
+    <h1 class="page-title">{{ contactPage.heroTitle }}</h1>
+    <p class="page-subtitle">
+      {{ contactPage.heroSubtitle }}
+    </p>
+  </div>
+</section>
+
+<section class="contact-main-section">
+  <div class="container">
+    
+    <!-- Top Contact Numbers Cards -->
+    <div class="contact-cards-grid">
+      <div class="contact-method-card">
+        <span class="card-num">{{ contactPage.method1.num }}</span>
+        <h3 class="card-title">{{ contactPage.method1.title }}</h3>
+        <p class="card-desc">{{ contactPage.method1.desc }}</p>
+        <div class="card-phone-number">{{ contactPage.method1.phone }}</div>
+        <button class="btn btn--whatsapp w-full" (click)="submitBookingWhatsApp()">
+          <span>{{ contactPage.method1.btn }}</span>
+        </button>
+      </div>
+
+      <div class="contact-method-card">
+        <span class="card-num">{{ contactPage.method2.num }}</span>
+        <h3 class="card-title">{{ contactPage.method2.title }}</h3>
+        <p class="card-desc">{{ contactPage.method2.desc }}</p>
+        <div class="card-phone-number">{{ contactPage.method2.phone }}</div>
+        <button class="btn btn--outline-dark w-full" (click)="callDirect(secondaryPhone)">
+          <span>{{ contactPage.method2.btn }}</span>
+        </button>
+      </div>
+
+      <div class="contact-method-card" (click)="openInstagram()" style="cursor: pointer;">
+        <span class="card-num">{{ contactPage.method3.num }}</span>
+        <h3 class="card-title">{{ contactPage.method3.title }}</h3>
+        <p class="card-desc">{{ contactPage.method3.desc }}</p>
+        <div class="card-phone-number">{{ contactPage.method3.handle }}</div>
+        <button class="btn btn--primary w-full">
+          <span>{{ contactPage.method3.btn }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Form & Social Proof Row -->
+    <div class="contact-form-layout">
+      
+      <!-- Left Column: Form -->
+      <div class="form-container-card">
+        <h2 class="form-heading">{{ contactPage.formHeading }}</h2>
+        <p class="form-subtext">{{ contactPage.formSubtext }}</p>
+
+        <form (ngSubmit)="submitBookingWhatsApp()" class="contact-interactive-form">
+          <div class="form-row">
+            <div class="form-field half">
+              <label>{{ contactPage.labelName }}</label>
+              <input type="text" [(ngModel)]="bookingForm.name" name="name" [placeholder]="contactPage.placeholderName" required>
+            </div>
+            <div class="form-field half">
+              <label>{{ contactPage.labelPhone }}</label>
+              <input type="tel" [(ngModel)]="bookingForm.phone" name="phone" [placeholder]="contactPage.placeholderPhone" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field half">
+              <label>{{ contactPage.labelDate }}</label>
+              <input type="date" [(ngModel)]="bookingForm.travelDate" name="travelDate">
+            </div>
+            <div class="form-field half">
+              <label>{{ contactPage.labelGuests }}</label>
+              <select [(ngModel)]="bookingForm.guests" name="guests">
+                <option *ngFor="let opt of contactPage.guestOptions" [value]="opt.val">
+                  {{ opt.label }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label>{{ contactPage.labelCircuit }}</label>
+            <select [(ngModel)]="bookingForm.serviceType" name="serviceType">
+              <option *ngFor="let c of contactPage.circuitOptions" [value]="c.val">
+                {{ c.label }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>{{ contactPage.labelTransport }}</label>
+            <select [(ngModel)]="bookingForm.transportOption" name="transportOption">
+              <option *ngFor="let t of contactPage.transportOptions" [value]="t.val">
+                {{ t.label }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>{{ contactPage.labelNotes }}</label>
+            <textarea [(ngModel)]="bookingForm.notes" name="notes" rows="3" [placeholder]="contactPage.placeholderNotes"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--whatsapp btn--lg w-full">
+            <span>{{ contactPage.btnSubmit }}</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column: Reassurances & Local Office -->
+      <div class="contact-sidebar">
+        <div class="sidebar-box">
+          <span class="label">{{ contactPage.sidebarTag }}</span>
+          <h3 class="sidebar-title">{{ contactPage.sidebarTitle }}</h3>
+          
+          <ul class="sidebar-reasons">
+            <li *ngFor="let r of contactPage.reasons">
+              <span class="reason-num">{{ r.num }}</span>
+              <div>
+                <strong>{{ r.title }}</strong>
+                <p>{{ r.desc }}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-office-card">
+          <h4 class="office-title">{{ contactPage.officeTitle }}</h4>
+          <p class="office-p">{{ contactPage.officeAddress }}</p>
+          <p class="office-p">{{ contactPage.officeLine1 }}</p>
+          <p class="office-p">{{ contactPage.officeLine2 }}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="contact-faq-wrapper">
+      <div class="section-header section-header--center">
+        <span class="label">{{ langService.currentLang() === 'ar' ? 'الأسئلة الشائعة' : (langService.currentLang() === 'en' ? 'FREQUENTLY ASKED QUESTIONS' : 'FOIRE AUX QUESTIONS') }}</span>
+        <h2 class="section-title">{{ langService.currentLang() === 'ar' ? 'أسئلة شائعة قبل الحجز' : (langService.currentLang() === 'en' ? 'Common Questions Before Booking' : 'Questions Fréquentes avant Réservation') }}</h2>
+      </div>
+
+      <div class="faq-accordion-list">
+        <div *ngFor="let f of contactPage.faqList; let i = index" class="faq-item" [class.open]="f.open">
+          <button class="faq-header" (click)="toggleFaq(i)">
+            <span class="faq-question">{{ f.question }}</span>
+            <span class="faq-icon">{{ f.open ? '−' : '+' }}</span>
+          </button>
+          <div class="faq-body" *ngIf="f.open">
+            <p>{{ f.answer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

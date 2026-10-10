@@ -1,0 +1,64 @@
+<section class="page-hero-banner">
+  <div class="container hero-text-wrap">
+    <span class="label">{{ langService.destinationsPage.heroTag }}</span>
+    <h1 class="page-title">{{ langService.destinationsPage.heroTitle }}</h1>
+    <p class="page-subtitle">
+      {{ langService.destinationsPage.heroSubtitle }}
+    </p>
+  </div>
+</section>
+
+<section class="destinations-detail-section">
+  <div class="container">
+    <div class="destinations-stack">
+      <div *ngFor="let dest of destinationsList; let i = index" 
+           class="destination-detailed-card" 
+           [class.reverse]="i % 2 === 1">
+        
+        <div class="dest-media-col">
+          <div class="dest-image-frame">
+            <img [src]="dest.imageUrl" [alt]="dest.name" class="dest-featured-img">
+            <div class="dest-badge-corner">{{ dest.tag }}</div>
+          </div>
+        </div>
+
+        <div class="dest-info-col">
+          <div class="dest-meta-header">
+            <span class="label">{{ dest.tagline }}</span>
+            <h2 class="dest-name">{{ dest.name }}</h2>
+          </div>
+
+          <p class="dest-description">{{ dest.description }}</p>
+
+          <div class="dest-key-highlights">
+            <div class="highlights-title">{{ langService.destinationsPage.highlightsTitle }}</div>
+            <ul>
+              <li *ngFor="let hl of dest.highlights">
+                <span class="check-icon">•</span>
+                <span>{{ hl }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="dest-practical-box">
+            <div class="practical-item">
+              <span class="p-label">{{ langService.destinationsPage.idealForLabel }}</span>
+              <span class="p-value">{{ dest.idealFor }}</span>
+            </div>
+            <div class="practical-item">
+              <span class="p-label">{{ langService.destinationsPage.bestTimeLabel }}</span>
+              <span class="p-value">{{ dest.bestTime }}</span>
+            </div>
+          </div>
+
+          <div class="dest-action-buttons">
+            <a routerLink="/circuits" class="btn btn--outline-dark">
+              <span>{{ langService.destinationsPage.btnAssociatedCircuits }}</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

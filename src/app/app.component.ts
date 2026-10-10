@@ -42,8 +42,38 @@ export class AppComponent {
     return this.langService.currentLang();
   }
 
-  setLanguage(lang: Language) {
-    this.langService.setLanguage(lang);
+  cycleLanguage() {
+    const order: Language[] = ['fr', 'en', 'ar'];
+    const currentIndex = order.indexOf(this.currentLang);
+    const nextLang = order[(currentIndex + 1) % order.length];
+    this.langService.setLanguage(nextLang);
+  }
+
+  get currentLangName(): string {
+    switch (this.currentLang) {
+      case 'fr': return 'Français';
+      case 'en': return 'English';
+      case 'ar': return 'العربية';
+      default: return 'Français';
+    }
+  }
+
+  get nextLangHint(): string {
+    switch (this.currentLang) {
+      case 'fr': return 'Passer en English';
+      case 'en': return 'Switch to العربية';
+      case 'ar': return 'التبديل إلى Français';
+      default: return 'Changer';
+    }
+  }
+
+  get nextLangLabel(): string {
+    switch (this.currentLang) {
+      case 'fr': return 'Passer à l\'anglais (EN)';
+      case 'en': return 'Switch to Arabic (AR)';
+      case 'ar': return 'Passer au français (FR)';
+      default: return 'Changer de langue';
+    }
   }
 
   toggleMobileMenu() {

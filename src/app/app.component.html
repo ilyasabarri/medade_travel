@@ -22,12 +22,15 @@
 
     <!-- Header Actions (Language Switcher, Direct Phone & WhatsApp CTA) -->
     <div class="nav-actions">
-      <!-- Multilingual Switcher Pill (Desktop & Mobile Header) -->
-      <div class="lang-switcher" aria-label="Language Selector">
-        <button class="lang-btn" [class.active]="currentLang === 'fr'" (click)="setLanguage('fr')" aria-label="Passer en Français">FR</button>
-        <button class="lang-btn" [class.active]="currentLang === 'en'" (click)="setLanguage('en')" aria-label="Switch to English">EN</button>
-        <button class="lang-btn" [class.active]="currentLang === 'ar'" (click)="setLanguage('ar')" aria-label="التبديل إلى العربية">عربي</button>
-      </div>
+      <!-- Language Cycle Button (Changes to next language on click) -->
+      <button class="lang-cycle-btn" (click)="cycleLanguage()" [title]="nextLangLabel" [attr.aria-label]="nextLangLabel">
+        <svg class="lang-globe-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <span class="lang-badge">{{ currentLang.toUpperCase() }}</span>
+      </button>
 
       <a [href]="'tel:' + primaryPhone.replace(' ', '').replace(' ', '').replace(' ', '')" class="nav-phone-link">
         <span class="phone-number">{{ primaryPhone }}</span>
@@ -47,30 +50,24 @@
 
   <!-- Mobile Drawer Menu -->
   <div class="mobile-nav-overlay" [class.open]="mobileMenuOpen">
-    <!-- Dedicated Premium Mobile Language Selector Card -->
+    <!-- Dedicated Mobile Language Cycle Button -->
     <div class="mobile-lang-card">
-      <div class="mobile-lang-card-title">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="2" y1="12" x2="22" y2="12"></line>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-        </svg>
-        <span>{{ currentLang === 'ar' ? 'لغة الموقع' : (currentLang === 'en' ? 'Language / Devise' : 'Langue du site') }}</span>
-      </div>
-      <div class="mobile-lang-segmented" role="tablist">
-        <button class="mobile-lang-pill" [class.active]="currentLang === 'fr'" (click)="setLanguage('fr')">
-          <span class="lang-code">FR</span>
-          <span class="lang-name">Français</span>
-        </button>
-        <button class="mobile-lang-pill" [class.active]="currentLang === 'en'" (click)="setLanguage('en')">
-          <span class="lang-code">EN</span>
-          <span class="lang-name">English</span>
-        </button>
-        <button class="mobile-lang-pill" [class.active]="currentLang === 'ar'" (click)="setLanguage('ar')">
-          <span class="lang-code">AR</span>
-          <span class="lang-name">العربية</span>
-        </button>
-      </div>
+      <button class="mobile-lang-cycle-btn" (click)="cycleLanguage()" [title]="nextLangLabel" [attr.aria-label]="nextLangLabel">
+        <div class="mobile-lang-left">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span class="mobile-lang-label">{{ currentLangName }} ({{ currentLang.toUpperCase() }})</span>
+        </div>
+        <span class="mobile-lang-action">
+          {{ nextLangHint }}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </span>
+      </button>
     </div>
 
     <a routerLink="/" (click)="closeMobileMenu()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ langService.ui.navHome }}</a>

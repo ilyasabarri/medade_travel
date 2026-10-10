@@ -250,129 +250,109 @@ h1, h2, h3, h4 {
 /* ==========================================================================
    LANGUAGE SWITCHER & RTL STYLING (ARABIC / FRENCH / ENGLISH)
    ========================================================================== */
-.lang-switcher {
+.lang-cycle-btn {
   display: inline-flex;
   align-items: center;
-  background: rgba(26, 39, 68, 0.07);
-  border: 1px solid rgba(212, 160, 23, 0.35);
+  gap: 7px;
+  background: rgba(26, 39, 68, 0.06);
+  border: 1px solid rgba(212, 160, 23, 0.45);
   border-radius: 999px;
-  padding: 3px 4px;
-  gap: 3px;
+  padding: 6px 14px;
+  color: var(--midnight);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  user-select: none;
   backdrop-filter: blur(8px);
 }
 
-.scrolled .lang-switcher {
+.scrolled .lang-cycle-btn {
   background: rgba(26, 39, 68, 0.08);
-  border-color: rgba(26, 39, 68, 0.2);
+  border-color: rgba(212, 160, 23, 0.4);
 }
 
-.lang-btn {
-  background: transparent;
-  border: none;
-  color: var(--midnight);
-  padding: 5px 11px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  line-height: 1;
-}
-
-.lang-btn:hover:not(.active) {
-  background: rgba(179, 60, 10, 0.09);
-  color: var(--terracotta);
-}
-
-.lang-btn.active {
+.lang-cycle-btn:hover {
   background: var(--terracotta);
+  border-color: var(--terracotta);
   color: #FFFFFF !important;
-  box-shadow: 0 2px 10px rgba(179, 60, 10, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(179, 60, 10, 0.35);
 }
 
-/* Dedicated Mobile Drawer Language Selector */
+.lang-cycle-btn:hover .lang-globe-icon {
+  stroke: #FFFFFF;
+}
+
+.lang-cycle-btn:active {
+  transform: translateY(0);
+}
+
+.lang-cycle-btn .lang-globe-icon {
+  stroke: var(--gold);
+  transition: stroke 0.25s ease;
+  flex-shrink: 0;
+}
+
+.lang-cycle-btn .lang-badge {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 12.5px;
+}
+
+/* Dedicated Mobile Drawer Language Button */
 .mobile-lang-card {
   background: #FFFFFF;
   border: 1px solid rgba(212, 160, 23, 0.35);
   border-radius: 14px;
-  padding: 14px 14px;
+  padding: 8px;
   margin-bottom: 20px;
   box-shadow: 0 4px 18px rgba(44, 36, 32, 0.05);
 }
 
-.mobile-lang-card-title {
+.mobile-lang-cycle-btn {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  margin-bottom: 10px;
+  justify-content: space-between;
+  background: var(--sand);
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: var(--midnight);
+  font-family: inherit;
 }
 
-.mobile-lang-card-title svg {
+.mobile-lang-cycle-btn:hover,
+.mobile-lang-cycle-btn:active {
+  background: rgba(179, 60, 10, 0.08);
+  border-color: var(--terracotta);
+}
+
+.mobile-lang-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.mobile-lang-left svg {
   color: var(--gold);
 }
 
-.mobile-lang-segmented {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  background: var(--sand);
-  padding: 5px;
-  border-radius: 10px;
-}
-
-.mobile-lang-pill {
+.mobile-lang-action {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 3px;
-  padding: 8px 4px;
-  border: none;
-  background: transparent;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  color: var(--charcoal);
-  min-height: 48px;
-}
-
-.mobile-lang-pill .lang-code {
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-}
-
-.mobile-lang-pill .lang-name {
-  font-size: 13px;
+  gap: 6px;
+  font-size: 12px;
   font-weight: 700;
-  line-height: 1.1;
-  color: var(--charcoal);
-}
-
-.mobile-lang-pill:hover:not(.active) {
-  background: rgba(255, 255, 255, 0.7);
   color: var(--terracotta);
-}
-
-.mobile-lang-pill.active {
-  background: var(--terracotta);
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 14px rgba(179, 60, 10, 0.35);
-}
-
-.mobile-lang-pill.active .lang-code {
-  color: var(--sand);
-}
-
-.mobile-lang-pill.active .lang-name {
-  color: #FFFFFF;
 }
 
 html[dir="rtl"] .mobile-lang-card-title {

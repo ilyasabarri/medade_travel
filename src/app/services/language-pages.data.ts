@@ -418,7 +418,7 @@ export const CONTACT_PAGE_DATA: Record<Language, ContactPageData> = {
     ],
     labelNotes: 'Notes ou Précisions Particulières',
     placeholderNotes: 'Ex: Nom de votre riad, célébration d\'un événement, souhaits particuliers...',
-    btnSubmit: 'Envoyer la Demande sur WhatsApp Direct',
+    btnSubmit: 'Réserver sur WhatsApp Direct',
     sidebarTag: 'NOTRE PROMESSE LOCALE',
     sidebarTitle: 'Pourquoi Réserver Directement avec Medade Travel ?',
     reasons: [
@@ -466,13 +466,13 @@ export const CONTACT_PAGE_DATA: Record<Language, ContactPageData> = {
     ],
     waMessageTemplate: (form: any) =>
       `*DEMANDE DE RÉSERVATION - MEDADE TRAVEL*\n\n` +
-      `👤 *Nom complet :* ${form.name || 'Non renseigné'}\n` +
-      `📱 *Téléphone / WhatsApp :* ${form.phone || 'Non renseigné'}\n` +
-      `📅 *Date souhaitée :* ${form.travelDate || 'À convenir'}\n` +
-      `👥 *Nombre de voyageurs :* ${form.guests}\n` +
-      `📍 *Circuit sélectionné :* ${form.serviceType}\n` +
-      `🚘 *Formule de transport :* ${form.transportOption}\n` +
-      `📝 *Précisions / Demandes :* ${form.notes || 'Aucune précision'}\n\n` +
+      `*Nom complet :* ${form.name || 'Non renseigné'}\n` +
+      `*Téléphone / WhatsApp :* ${form.phone || 'Non renseigné'}\n` +
+      `*Date souhaitée :* ${form.travelDate || 'À convenir'}\n` +
+      `*Nombre de voyageurs :* ${form.guests}\n` +
+      `*Circuit sélectionné :* ${form.serviceType}\n` +
+      `*Formule de transport :* ${form.transportOption}\n` +
+      `*Précisions / Demandes :* ${form.notes || 'Aucune précision'}\n\n` +
       `Merci de me confirmer la disponibilité et le tarif direct sans commission.`
   },
   en: {
@@ -528,7 +528,7 @@ export const CONTACT_PAGE_DATA: Record<Language, ContactPageData> = {
     ],
     labelNotes: 'Special Requests & Notes',
     placeholderNotes: 'e.g. Riad name, dietary requirements, birthday celebration...',
-    btnSubmit: 'Send Request on Direct WhatsApp',
+    btnSubmit: 'Book on Direct WhatsApp',
     sidebarTag: 'OUR LOCAL PROMISE',
     sidebarTitle: 'Why Book Directly with Medade Travel?',
     reasons: [
@@ -576,13 +576,13 @@ export const CONTACT_PAGE_DATA: Record<Language, ContactPageData> = {
     ],
     waMessageTemplate: (form: any) =>
       `*NEW BOOKING REQUEST - MEDADE TRAVEL*\n\n` +
-      `👤 *Full Name:* ${form.name || 'Not provided'}\n` +
-      `📱 *Phone / WhatsApp:* ${form.phone || 'Not provided'}\n` +
-      `📅 *Planned Travel Date:* ${form.travelDate || 'To be determined'}\n` +
-      `👥 *Number of Travellers:* ${form.guests}\n` +
-      `📍 *Selected Tour:* ${form.serviceType}\n` +
-      `🚘 *Transport Option:* ${form.transportOption}\n` +
-      `📝 *Special Notes / Requests:* ${form.notes || 'None'}\n\n` +
+      `*Full Name:* ${form.name || 'Not provided'}\n` +
+      `*Phone / WhatsApp:* ${form.phone || 'Not provided'}\n` +
+      `*Planned Travel Date:* ${form.travelDate || 'To be determined'}\n` +
+      `*Number of Travellers:* ${form.guests}\n` +
+      `*Selected Tour:* ${form.serviceType}\n` +
+      `*Transport Option:* ${form.transportOption}\n` +
+      `*Special Notes / Requests:* ${form.notes || 'None'}\n\n` +
       `Please confirm availability and direct rate with no agency fees. Thank you!`
   },
   ar: {
@@ -686,13 +686,13 @@ export const CONTACT_PAGE_DATA: Record<Language, ContactPageData> = {
     ],
     waMessageTemplate: (form: any) =>
       `*طلب حجز جديد - مداد ترافيل*\n\n` +
-      `👤 *الاسم الكامل:* ${form.name || 'غير محدد'}\n` +
-      `📱 *رقم الهاتف / واتساب:* ${form.phone || 'غير محدد'}\n` +
-      `📅 *تاريخ الرحلة المرتقب:* ${form.travelDate || 'يحدد لاحقاً'}\n` +
-      `👥 *عدد المسافرين:* ${form.guests}\n` +
-      `📍 *الرحلة المختارة:* ${form.serviceType}\n` +
-      `🚘 *صيغة النقل:* ${form.transportOption}\n` +
-      `📝 *ملاحظات خاصة:* ${form.notes || 'لا توجد ملاحظات إضافية'}\n\n` +
+      `*الاسم الكامل:* ${form.name || 'غير محدد'}\n` +
+      `*رقم الهاتف / واتساب:* ${form.phone || 'غير محدد'}\n` +
+      `*تاريخ الرحلة المرتقب:* ${form.travelDate || 'يحدد لاحقاً'}\n` +
+      `*عدد المسافرين:* ${form.guests}\n` +
+      `*الرحلة المختارة:* ${form.serviceType}\n` +
+      `*صيغة النقل:* ${form.transportOption}\n` +
+      `*ملاحظات خاصة:* ${form.notes || 'لا توجد ملاحظات إضافية'}\n\n` +
       `المرجو تأكيد التوافر وأفضل سعر مباشر بدون عمولة. شكراً لكم!`
   }
 };

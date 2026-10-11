@@ -5,10 +5,10 @@ import { CircuitsComponent } from './pages/circuits/circuits.component';
 import { ContactComponent } from './pages/contact/contact.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, title: 'Medade Travel | Agence 100% Marocaine - Circuits, Sahara & Transport' },
-  { path: 'destinations', component: DestinationsComponent, title: 'Destinations au Maroc | Medade Travel' },
-  { path: 'circuits', component: CircuitsComponent, title: 'Circuits, Expéditions & Transport | Medade Travel' },
-  { path: 'contact', component: ContactComponent, title: 'Devis & Contact Direct | Medade Travel' },
-  { path: 'experiences', redirectTo: 'circuits' },
+  { path: '', component: HomeComponent, title: 'Medade Travel | 3 Circuits Phares au Maroc & Transport Direct' },
+  { path: 'circuits', redirectTo: '' },
+  { path: 'destinations', redirectTo: '' },
+  { path: 'contact', redirectTo: '' },
+  { path: 'experiences', redirectTo: '' },
   { path: '**', redirectTo: '' }
 ];

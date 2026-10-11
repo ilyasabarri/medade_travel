@@ -152,7 +152,7 @@
         </p>
         <ul class="transport-perks">
           <li *ngFor="let perk of langService.circuitsPage.card1.perks">
-            <span>✓</span> {{ perk }}
+            <span class="check-bullet">•</span> {{ perk }}
           </li>
         </ul>
         <button class="btn btn--primary w-full" (click)="inquireTransportWhatsApp(langService.circuitsPage.card1.title)">
@@ -173,7 +173,7 @@
         </p>
         <ul class="transport-perks">
           <li *ngFor="let perk of langService.circuitsPage.card2.perks">
-            <span>✓</span> {{ perk }}
+            <span class="check-bullet">•</span> {{ perk }}
           </li>
         </ul>
         <button class="btn btn--primary w-full" (click)="inquireTransportWhatsApp(langService.circuitsPage.card2.title)">

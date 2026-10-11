@@ -82,15 +82,32 @@ export class AppComponent {
 
   closeMobileMenu() {
     this.mobileMenuOpen = false;
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      setTimeout(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      }, 50);
+  }
+
+  scrollToSection(sectionId: string, event?: Event) {
+    if (event) {
+      event.preventDefault();
+    }
+    this.mobileMenuOpen = false;
+    if (typeof document !== 'undefined') {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   }
 
   quickWhatsApp() {
-    this.router.navigate(['/contact'], { fragment: 'booking-form' });
+    this.scrollToSection('booking');
+  }
+
+  openWhatsAppDirect() {
+    let msg = 'Bonjour Medade Travel, je souhaiterais des informations sur vos 3 circuits au Maroc et vos disponibilites.';
+    if (this.langService.currentLang() === 'en') {
+      msg = 'Hello Medade Travel, I would like information about your 3 Morocco tours and availability.';
+    } else if (this.langService.currentLang() === 'ar') {
+      msg = 'السلام عليكم مداد ترافيل، أود الاستفسار عن جولاتكم السياحية الثلاث بالمغرب والتوافر لديكم.';
+    }
+    window.open(`https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
   }
 }
